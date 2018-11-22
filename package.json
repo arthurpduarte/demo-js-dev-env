@@ -5,7 +5,7 @@
   "description": "JavaScript development environment Pluralsight course by Cory House",
   "scripts": {
     "prestart": "babel-node buildScripts/startMessage.js",
-    "start": "npm-run-all --parallel security-check open:src lint:watch test:watch",
+    "start": "npm-run-all --parallel security-check open:src lint:watch test:watch start-mockapi",
     "open:src": "babel-node buildScripts/srcServer.js",
     "lint": "esw webpack.config.* src buildScripts",
     "lint:watch": "npm run lint -- --watch",
@@ -13,7 +13,10 @@
     "localtunnel": "lt --port 3000",
     "share": "npm-run-all --parallel open:src localtunnel",
     "test": "mocha --reporter progress buildScripts/testSetup.js \"src/**/*.test.js\"",
-    "test:watch": "npm run test -- --watch"
+    "test:watch": "npm run test -- --watch",
+    "generate-mock-data": "babel-node buildScripts/generateMockData",
+    "prestart-mockapi": "npm run generate-mock-data",
+    "start-mockapi": "json-server --watch src/api/db.json --port 3001"
   },
   "author": "Cory House",
   "license": "MIT",
@@ -29,6 +32,7 @@
     "babel-loader": "^8.0.4",
     "chai": "^4.2.0",
     "chalk": "^2.4.1",
+    "chance": "^1.0.16",
     "cheerio": "^1.0.0-rc.2",
     "compression": "^1.7.3",
     "cross-env": "^5.2.0",
@@ -38,6 +42,7 @@
     "eslint-watch": "^4.0.2",
     "express": "^4.16.4",
     "extract-text-webpack-plugin": "^3.0.2",
+    "faker": "^4.1.0",
     "html-webpack-plugin": "^3.2.0",
     "jsdom": "^13.0.0",
     "json-schema-faker": "^0.5.0-rc16",
