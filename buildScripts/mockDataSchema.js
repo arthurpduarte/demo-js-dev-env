@@ -9,7 +9,7 @@ export const schema = {
                 "type": "object",
                 "properties": {
                     "id": {
-                        "type": "number",
+                        "type": "integer",
                         "unique": true,
                         "minimum": 1
                     },
