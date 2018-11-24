@@ -3,3 +3,6 @@ node_modules/
 
 # DB saves
 db-*.json
+
+# Build
+dist/

@@ -1,5 +1,11 @@
+import * as Sentry from '@sentry/browser';
+
 import './index.css';
 import { getUsers, deleteUser } from './api/userApi';
+
+Sentry.init({
+    dsn: 'https://9928168b6bae4dceb3b0280debc43f6e@sentry.io/1329560'
+});
 
 // Populate table of users via API call.
 getUsers().then(result => {

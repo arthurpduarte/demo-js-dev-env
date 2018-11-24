@@ -1,4 +1,5 @@
 import path from 'path';
+import HtmlWebpackPlugin from 'html-webpack-plugin';
 
 export default {
     mode: 'development',
@@ -12,7 +13,13 @@ export default {
         publicPath: '/',
         filename: 'bundle.js'
     },
-    plugins: [],
+    plugins: [
+        // Genrate HTML
+        new HtmlWebpackPlugin({
+            template: 'src/index.html',
+            inject: true
+        })
+    ],
     module: {
         rules: [
             {
